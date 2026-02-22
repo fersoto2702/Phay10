@@ -97,6 +97,8 @@ function typeMessage(texto) {
         typeCursor.style.display = 'none';
         firmaBlock.classList.add('visible');
         typing = false;
+        // Revelar sección del nombre después de la firma
+        setTimeout(revelarNombre, 1200);
       }, 600);
     }
   }
@@ -104,9 +106,43 @@ function typeMessage(texto) {
   setTimeout(typeChar, 200);
 }
 
+// ── REVELAR SECCIÓN DEL NOMBRE ────────────────────────────────────────
+function revelarNombre() {
+  const nombreSection = document.getElementById('nombreSection');
+  const parrafos = [
+    document.getElementById('np1'),
+    document.getElementById('np2'),
+    document.getElementById('np3'),
+  ];
+
+  // Limpiar estado anterior
+  nombreSection.classList.remove('visible');
+  parrafos.forEach(p => p.classList.remove('visible'));
+
+  // Revelar la sección contenedora
+  setTimeout(() => {
+    nombreSection.classList.add('visible');
+    // Revelar párrafos uno por uno con pausa entre cada uno
+    parrafos.forEach((p, i) => {
+      setTimeout(() => p.classList.add('visible'), 800 + i * 1400);
+    });
+  }, 600);
+}
+
 function startAnimation() {
   typeCursor.style.display = 'inline-block';
   firmaBlock.classList.remove('visible');
+
+  // Ocultar sección del nombre al reiniciar
+  const nombreSection = document.getElementById('nombreSection');
+  const parrafos = [
+    document.getElementById('np1'),
+    document.getElementById('np2'),
+    document.getElementById('np3'),
+  ];
+  nombreSection.classList.remove('visible');
+  parrafos.forEach(p => p.classList.remove('visible'));
+
   typeMessage(pickMessage());
 }
 

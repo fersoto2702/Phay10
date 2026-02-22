@@ -16,7 +16,8 @@ body {
   min-height: 100vh;
   background: var(--azul);
   font-family: 'Cormorant Garamond', serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -320,3 +321,94 @@ body {
   .moon-wrapper { top: 5%; right: 6%; }
   .moon { width: 65px; height: 65px; }
 }
+
+/* ── SECCIÓN ORIGEN DEL NOMBRE ── */
+.nombre-section {
+  margin-top: 60px;
+  padding: 0 10px 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+  text-align: center;
+}
+.nombre-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nombre-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto 40px;
+  max-width: 260px;
+}
+.nombre-divider-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent);
+}
+.nombre-divider-icon {
+  color: var(--oro);
+  font-size: 13px;
+  opacity: 0.4;
+}
+
+.nombre-titulo {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(44px, 10vw, 66px);
+  color: var(--luna);
+  line-height: 1;
+  letter-spacing: 3px;
+  text-shadow:
+    0 0 40px rgba(240,216,152,0.35),
+    0 0 80px rgba(240,216,152,0.15);
+  margin-bottom: 10px;
+}
+
+.nombre-subtitulo {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--oro);
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 40px;
+}
+.nombre-subtitulo em {
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--oro-l);
+  opacity: 0.9;
+}
+
+.nombre-parrafos {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.nombre-p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--plata-l);
+  line-height: 2;
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.nombre-p em {
+  color: var(--oro-l);
+  font-style: normal;
+  font-weight: 400;
+}
+.nombre-p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nombre-p:last-child { margin-bottom: 0; }
