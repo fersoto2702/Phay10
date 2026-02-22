@@ -1,0 +1,322 @@
+:root {
+  --azul:    #050d1a;
+  --azul-m:  #0a1628;
+  --azul-l:  #0f2040;
+  --plata:   #c8d8e8;
+  --plata-l: #e8f0f8;
+  --oro:     #c9a84c;
+  --oro-l:   #f0d080;
+  --luna:    #fff8e7;
+  --blanco:  rgba(255,255,255,0.85);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background: var(--azul);
+  font-family: 'Cormorant Garamond', serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+}
+
+/* ── CURSOR ── */
+.cursor {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--oro-l);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 10px var(--oro);
+}
+
+/* ── FONDO ── */
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%,   rgba(15,32,64,0.9) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 100%, rgba(5,13,26,1)    0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%,  rgba(10,22,40,0.8) 0%, transparent 50%),
+    linear-gradient(180deg, #020810 0%, #050d1a 40%, #080f1e 100%);
+}
+
+/* ── ESTRELLAS ── */
+.stars-layer {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+/* ── LUNA ── */
+.moon-wrapper {
+  position: fixed;
+  top: 8%; right: 12%;
+  z-index: 2;
+  animation: moon-rise 3s ease 0.5s both;
+}
+@keyframes moon-rise {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.moon {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--luna), #f0d898, #d4b870);
+  box-shadow:
+    0 0 30px rgba(240,216,152,0.4),
+    0 0 80px rgba(240,216,152,0.15),
+    0 0 140px rgba(240,216,152,0.08),
+    inset -8px -8px 20px rgba(180,140,60,0.3);
+  animation: moon-glow 4s ease-in-out infinite;
+}
+@keyframes moon-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 30px rgba(240,216,152,0.4),
+      0 0 80px rgba(240,216,152,0.15),
+      0 0 140px rgba(240,216,152,0.08),
+      inset -8px -8px 20px rgba(180,140,60,0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 50px rgba(240,216,152,0.6),
+      0 0 100px rgba(240,216,152,0.25),
+      0 0 180px rgba(240,216,152,0.12),
+      inset -8px -8px 20px rgba(180,140,60,0.3);
+  }
+}
+.moon::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(180,140,60,0.25);
+  top: 22px; left: 55px;
+  box-shadow:
+    -12px 20px 0 8px rgba(180,140,60,0.15),
+     14px 40px 0 4px rgba(180,140,60,0.1);
+}
+
+/* ── NUBES ── */
+.cloud {
+  position: fixed;
+  border-radius: 100px;
+  background: rgba(200,216,232,0.03);
+  filter: blur(20px);
+  animation: cloud-drift linear infinite;
+  z-index: 1;
+}
+@keyframes cloud-drift {
+  from { transform: translateX(-200px); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  to   { transform: translateX(120vw); opacity: 0; }
+}
+
+/* ── CONTENIDO ── */
+.content {
+  position: relative; z-index: 10;
+  text-align: center;
+  max-width: 600px;
+  padding: 40px 30px;
+}
+
+/* ── SALUDO ── */
+.greeting-block {
+  animation: fade-up 1.2s ease 0.8s both;
+}
+.greeting-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: var(--oro);
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 18px;
+}
+.greeting-main {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(52px, 12vw, 82px);
+  color: var(--luna);
+  line-height: 1;
+  text-shadow:
+    0 0 40px rgba(240,216,152,0.4),
+    0 0 80px rgba(240,216,152,0.15);
+  margin-bottom: 6px;
+}
+.greeting-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(38px, 9vw, 62px);
+  color: var(--oro-l);
+  line-height: 1;
+  text-shadow:
+    0 0 30px rgba(201,168,76,0.5),
+    0 0 60px rgba(201,168,76,0.2);
+}
+
+/* ── SEPARADOR ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px auto;
+  max-width: 300px;
+  animation: fade-up 1s ease 1.4s both;
+}
+.divider-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+.divider-icon {
+  color: var(--oro);
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+/* ── MENSAJE ── */
+.message-block {
+  animation: fade-up 1s ease 1.8s both;
+  position: relative;
+}
+.message-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 3.5vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--plata-l);
+  line-height: 1.9;
+  letter-spacing: 0.3px;
+  min-height: 120px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--oro-l);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── FIRMA ── */
+.firma-block {
+  margin-top: 40px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.firma-block.visible { opacity: 1; }
+.firma-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: rgba(201,168,76,0.5);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.firma-nombre {
+  font-family: 'Dancing Script', cursive;
+  font-size: 38px;
+  color: var(--oro-l);
+  text-shadow: 0 0 20px rgba(201,168,76,0.4);
+}
+.firma-corazon {
+  display: inline-block;
+  color: #c0392b;
+  margin-left: 6px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(192,57,43,0.6);
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.35); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.2); }
+}
+
+/* ── LUNA DECORATIVA ── */
+.deco-moon {
+  font-size: 22px;
+  display: block;
+  margin: 0 auto 10px;
+  animation: float-moon 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(240,216,152,0.5));
+}
+@keyframes float-moon {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-8px) rotate(5deg); }
+}
+
+/* ── POLVO ESTELAR ── */
+.stardust {
+  position: fixed; inset: 0; z-index: 3; pointer-events: none;
+}
+.dust {
+  position: absolute;
+  border-radius: 50%;
+  animation: dust-float linear infinite;
+  opacity: 0;
+}
+@keyframes dust-float {
+  0%   { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-10vh) translateX(var(--dx)) scale(1); opacity: 0; }
+}
+
+/* ── ANIMACIONES ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── BOTÓN REPLAY ── */
+.replay-btn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 20;
+  background: rgba(10,22,40,0.8);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: rgba(201,168,76,0.6);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fade-in-btn 0.5s ease 0.5s forwards;
+  backdrop-filter: blur(10px);
+}
+.replay-btn:hover {
+  border-color: rgba(201,168,76,0.7);
+  color: var(--oro-l);
+  background: rgba(10,22,40,0.95);
+  box-shadow: 0 0 20px rgba(201,168,76,0.1);
+}
+@keyframes fade-in-btn { to { opacity: 1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .moon-wrapper { top: 5%; right: 6%; }
+  .moon { width: 65px; height: 65px; }
+}

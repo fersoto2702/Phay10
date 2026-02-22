@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buenas noches, Phaython 🌙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@300;400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="noches-style.css">
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="sky"></div>
+  <div class="stars-layer" id="starsLayer"></div>
+  <div class="stardust" id="stardust"></div>
+  <div class="moon-wrapper"><div class="moon"></div></div>
+
+  <!-- Nubes -->
+  <div class="cloud" style="width:400px; height:60px; top:15%; animation-duration:60s; animation-delay:0s;"></div>
+  <div class="cloud" style="width:300px; height:40px; top:35%; animation-duration:80s; animation-delay:20s;"></div>
+  <div class="cloud" style="width:500px; height:50px; top:60%; animation-duration:70s; animation-delay:10s;"></div>
+
+  <!-- CONTENIDO -->
+  <div class="content">
+
+    <div class="greeting-block">
+      <div class="greeting-eyebrow">✦ &nbsp; para ti, esta noche &nbsp; ✦</div>
+      <span class="deco-moon">🌙</span>
+      <div class="greeting-main">Buenas noches,</div>
+      <div class="greeting-name">Phaython</div>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">✦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="message-block">
+      <div class="message-text" id="messageText">
+        <span class="cursor-blink" id="typeCursor"></span>
+      </div>
+    </div>
+
+    <div class="firma-block" id="firmaBlock">
+      <div class="firma-label">con todo mi amor</div>
+      <div class="firma-nombre">Kenny <span class="firma-corazon">♥</span></div>
+    </div>
+
+  </div>
+
+  <button class="replay-btn" id="replayBtn">↺ &nbsp; repetir</button>
+
+  <script src="noches-script.js"></script>
+</body>
+</html>
