@@ -218,6 +218,6 @@ const cartaObserver = new IntersectionObserver((entries) => {
       cartaObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
 
 cartaElementos.forEach(el => cartaObserver.observe(el));
