@@ -412,3 +412,156 @@ body {
   transform: translateY(0);
 }
 .nombre-p:last-child { margin-bottom: 0; }
+
+/* ── CARTA DE AMOR ── */
+.carta-section {
+  margin-top: 80px;
+  padding: 0 0 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+}
+.carta-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carta-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto 70px;
+  max-width: 300px;
+}
+.carta-div-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+}
+.carta-div-icon {
+  font-size: 18px;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 6px rgba(192,57,43,0.4));
+}
+
+/* Bloques de texto */
+.carta-bloque {
+  margin-bottom: 60px;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.carta-bloque.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carta-num {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--oro);
+  opacity: 0.45;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.carta-titulo {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(32px, 7vw, 46px);
+  color: var(--luna);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  text-shadow: 0 0 30px rgba(240,216,152,0.12);
+}
+
+.carta-bloque p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 3vw, 21px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--plata-l);
+  line-height: 2.1;
+  margin-bottom: 20px;
+}
+.carta-bloque p:last-child { margin-bottom: 0; }
+.carta-bloque p em  { color: var(--luna); font-style: normal; }
+.carta-bloque p strong { color: var(--luna); font-weight: 500; }
+
+/* Citas */
+.carta-cita {
+  margin: 10px 0 60px;
+  padding: 28px 0 28px 24px;
+  border-left: 1px solid rgba(201,168,76,0.2);
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.carta-cita.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.carta-cita p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 3.5vw, 23px);
+  font-style: italic;
+  color: rgba(255,248,231,0.75);
+  line-height: 1.9;
+}
+
+/* Cierre */
+.carta-cierre {
+  text-align: right;
+  margin-top: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+}
+.carta-cierre.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.carta-cierre-frase {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--plata-l);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.carta-cierre-nombre {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(52px, 12vw, 72px);
+  color: var(--luna);
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(240,216,152,0.15);
+}
+.carta-cierre-corazon {
+  display: inline-block;
+  color: #8b1a1a;
+  font-size: 26px;
+  margin-left: 6px;
+  vertical-align: middle;
+  animation: latido-carta 1.4s ease-in-out infinite;
+  text-shadow: 0 0 18px rgba(139,26,26,0.6);
+}
+@keyframes latido-carta {
+  0%,100% { transform: scale(1); }
+  15%      { transform: scale(1.35); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.2); }
+}
+.carta-vela {
+  margin-top: 40px;
+  font-size: 26px;
+  text-align: center;
+  animation: vela-mecer 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(245,200,66,0.4));
+}
+@keyframes vela-mecer {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-6px) rotate(1deg); }
+}

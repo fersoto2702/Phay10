@@ -204,3 +204,20 @@ document.addEventListener('mousemove', e => {
     lastMouse = { x: e.clientX, y: e.clientY };
   }
 });
+
+
+// ── REVEAL CARTA DE AMOR POR SCROLL ──────────────────────────────────
+const cartaElementos = document.querySelectorAll(
+  '.carta-bloque, .carta-cita, .carta-cierre, .carta-section'
+);
+
+const cartaObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      cartaObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+cartaElementos.forEach(el => cartaObserver.observe(el));
